@@ -1,0 +1,20 @@
+{
+  "name": "watchlify",
+  "version": "1.0.0",
+  "description": "A video sharing platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "watchlify",
+    "video",
+    "streaming",
+    "video",
+    "sharing",
+    "youtube",
+    "clone"
+  ],
+  "author": "Naved Uddin",
+  "license": "ISC"
+}
