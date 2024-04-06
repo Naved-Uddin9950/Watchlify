@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import connectDB from "./db/connection.js";
 import express from 'express';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 dotenv.config({
     path: './.env'
@@ -12,7 +13,10 @@ const port = process.env.PORT || 8080;
 
 app.use(cors({
     origin : process.env.CORS_ORIGIN
-}))
+}));
+
+app.use(cookieParser());
+
 
 connectDB()
 .then( () => {
