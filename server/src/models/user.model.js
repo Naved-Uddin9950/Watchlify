@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
 
 const userSchema = new mongoose.Schema({
     username : {
@@ -35,5 +36,19 @@ const userSchema = new mongoose.Schema({
     }
 
 }, {timestamps: true});
+
+userSchema.pre('save', async function(next) {
+    if(!this.isModified('password')){
+        next();
+    }
+    try {
+        const saltRounds = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(this.password, saltRounds);
+        this.password = hashedPassword;
+        next();
+    } catch (error) {
+        console.error(`User password hashing error : ${error}`);
+    }
+});
 
 export const User = mongoose.model('User', userSchema);
