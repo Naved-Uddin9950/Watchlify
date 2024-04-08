@@ -2,10 +2,12 @@ import mongoose from 'mongoose';
 
 const videoSchema = new mongoose.Schema({
     videoFile : {
-        type : String
+        type : String,
+        required : [true, 'Video is required']
     },
     thumbnail : {
-        type : String
+        type : String,
+        required : [true, 'Thumbnail is required']
     },
     owner : {
         type : mongoose.Schema.Types.ObjectId,
@@ -19,11 +21,11 @@ const videoSchema = new mongoose.Schema({
         type : String,
     },
     duration : {
-        type : number
+        type : Number,
+        required : [true, 'Duration is required']
     },
     views : {
-        type : number,
-        required : [true, 'Views is required'],
+        type : Number,
         default : 0
     },
     isPublished : {
