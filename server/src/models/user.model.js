@@ -16,10 +16,10 @@ const userSchema = new mongoose.Schema({
         type : String,
         required : [true, 'Name is required']
     },
-    watchHistory : {
+    watchHistory : [{
         type : mongoose.Schema.Types.ObjectId,
         ref : 'Video'
-    },
+    }],
     avatar : {
         type : String
     },
